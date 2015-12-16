@@ -1,0 +1,121 @@
+#:import WipeTransition kivy.uix.screenmanager.WipeTransition
+
+
+<Label>:
+	color: 1, 1, 1, 1
+<Button>:
+	color: 1, 1, 1, 1
+
+<Screen>:
+	canvas.before:
+    	Color:
+    		rgba: .15, .15, .15, 1
+    	Rectangle:
+    		pos: self.pos
+    		size: self.size
+
+
+
+
+
+
+ScreenManage:
+    transition: WipeTransition()
+    ScreenLogin:
+    ScreenHome:
+
+<ScreenLogin>:
+    name: 'ScreenLogin'
+    ContainerLogin:
+            
+<ScreenHome>:
+    name: 'ScreenHome'
+    ContainerHome:
+
+
+
+
+
+
+
+
+<ContainerLogin>:
+	anchor_x: 'center'
+	anchor_y: 'center'
+
+	BoxLayout:
+		id: boxlayout_1
+		orientation: 'vertical'
+		size_hint: (None, None)
+		width: root.width - (root.width * 10 / 100)
+		height: 200
+
+		
+
+		Label:
+			text: 'User'
+			font_size: 50
+			
+			size_hint: (0, 0)
+			width: self.texture_size[0]
+			height: self.texture_size[1]
+
+
+		TextInput:
+			id: txt_user
+			text: ' '
+			size_hint: (1, 0)
+			font_size: 50
+			height: self.font_size + 23
+			
+
+		Label:
+			text: 'Password'
+			font_size: 50
+			size_hint: (0, 0)
+			width: self.texture_size[0]
+			height: self.texture_size[1]
+
+		TextInput:
+			id: txt_password
+			text: ' '
+			password: True
+
+			size_hint: (1, None)
+			font_size: 50
+			height: self.font_size + 23
+
+
+
+		Label:
+			text: ''
+			size_hint_y: None
+			height: 10
+
+		Button:
+			text: 'Sign In'
+			font_size: 50
+
+			size_hint: (1, None)
+			height: self.font_size + 30
+
+			on_release: root.login()
+
+
+
+			
+<ContainerHome>:
+	orientation: 'vertical'
+
+
+
+
+
+<MessageBox>:
+	text: ''
+	Label:
+		text: root.text
+		font_size: 20
+		text_size: self.width, None
+		size_hint_y: None
+		height: self.texture_size[1]
